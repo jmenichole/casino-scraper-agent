@@ -45,6 +45,29 @@ Then run:
 python -m casino_collector.cli --file casinos.txt
 ```
 
+**NEW:** Files can now contain mixed content! The tool automatically extracts URLs from text:
+```
+My casino list:
+https://casino1.com - Great bonuses
+https://casino2.com
+```
+
+### 3b. Copy-Paste Casino Lists (NEW!)
+
+No need to create a file! Paste your casino list directly:
+```bash
+python -m casino_collector.cli --list "https://casino1.com
+https://casino2.com
+https://casino3.com"
+```
+
+Works with mixed content too:
+```bash
+python -m casino_collector.cli --list "Check out:
+https://casino1.com - best odds
+https://casino2.com"
+```
+
 ### 4. Use Configuration File
 
 Copy and edit the example config:
@@ -99,6 +122,10 @@ The system collects 7 categories of casino information:
 ```bash
 # Change output directory
 python -m casino_collector.cli --url URL --output ./my_data
+
+# Copy-paste a list of casinos
+python -m casino_collector.cli --list "https://casino1.com
+https://casino2.com"
 
 # Adjust scraping delays (be more respectful)
 python -m casino_collector.cli --file casinos.txt --delay-min 2 --delay-max 5

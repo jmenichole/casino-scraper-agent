@@ -14,7 +14,7 @@ from casino_collector.models import CasinoData
 from casino_collector.scrapers import GenericCasinoScraper
 from casino_collector.storage import DataStorage
 from casino_collector.config import Config
-from casino_collector.utils import setup_logging, validate_url, format_duration
+from casino_collector.utils import setup_logging, validate_url, format_duration, extract_urls
 
 
 def main():
@@ -29,6 +29,11 @@ Examples:
   
   # Scrape multiple casinos from a file
   python -m casino_collector.cli --file casinos.txt
+  
+  # Paste a list of casino URLs directly
+  python -m casino_collector.cli --list "https://casino1.com
+  https://casino2.com
+  https://casino3.com"
   
   # Use custom config
   python -m casino_collector.cli --config config.json --url https://example-casino.com
@@ -46,7 +51,11 @@ Examples:
     )
     input_group.add_argument(
         '-f', '--file',
-        help='File containing list of casino URLs (one per line)'
+        help='File containing list of casino URLs (one per line, or mixed with text)'
+    )
+    input_group.add_argument(
+        '-l', '--list',
+        help='Multi-line list of casino URLs or text containing URLs (paste directly)'
     )
     input_group.add_argument(
         '--config',
@@ -139,10 +148,19 @@ Examples:
         elif args.file:
             try:
                 with open(args.file, 'r') as f:
-                    urls = [line.strip() for line in f if line.strip() and not line.startswith('#')]
+                    file_content = f.read()
+                # Extract URLs from file content (handles mixed text)
+                urls = extract_urls(file_content)
+                if not urls:
+                    # Fallback to line-by-line reading for backward compatibility
+                    urls = [line.strip() for line in file_content.split('\n') 
+                           if line.strip() and not line.startswith('#')]
             except FileNotFoundError:
                 print(f"Error: File not found: {args.file}")
                 sys.exit(1)
+        elif args.list:
+            # Extract URLs from pasted list
+            urls = extract_urls(args.list)
     
     # Validate URLs
     valid_urls = []

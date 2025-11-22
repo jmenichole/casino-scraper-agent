@@ -109,3 +109,51 @@ def format_duration(seconds: float) -> str:
         hours = int(seconds // 3600)
         minutes = int((seconds % 3600) // 60)
         return f"{hours}h {minutes}m"
+
+
+def extract_urls(text: str) -> list[str]:
+    """
+    Extract all valid URLs from a text string.
+    
+    This function finds all HTTP/HTTPS URLs in the given text,
+    allowing for mixed content like descriptions, comments, and URLs.
+    
+    Args:
+        text: Text containing URLs (can be multi-line with mixed content)
+        
+    Returns:
+        List of extracted URLs
+    
+    Examples:
+        >>> extract_urls("Check out https://example.com and http://test.com")
+        ['https://example.com', 'http://test.com']
+        
+        >>> extract_urls("Affiliate links\\nhttps://casino1.com\\nhttps://casino2.com")
+        ['https://casino1.com', 'https://casino2.com']
+    """
+    import re
+    
+    # URL regex pattern that matches http:// or https:// URLs
+    # This pattern is designed to extract URLs from mixed text
+    url_pattern = re.compile(
+        r'https?://'  # Match http:// or https://
+        r'(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}'  # Domain name
+        r'(?::[0-9]{1,5})?'  # Optional port
+        r'(?:/[^\s]*)?',  # Optional path
+        re.IGNORECASE
+    )
+    
+    # Find all URLs in the text
+    urls = url_pattern.findall(text)
+    
+    # Validate and return unique URLs
+    valid_urls = []
+    seen = set()
+    for url in urls:
+        # Remove trailing punctuation that might have been captured
+        url = url.rstrip('.,;:!?)')
+        if url not in seen and validate_url(url):
+            valid_urls.append(url)
+            seen.add(url)
+    
+    return valid_urls
