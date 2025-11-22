@@ -1,0 +1,398 @@
+[
+  {
+    "name": "Royal Fortune Casino",
+    "url": "https://www.royalfortune-casino.example.com/",
+    "description": "A premium online casino offering a wide selection of games with top-tier security and fast withdrawals.",
+    "licenses": [
+      {
+        "authority": "Malta Gaming Authority",
+        "license_number": "MGA/B2C/123/2020",
+        "jurisdiction": "Malta",
+        "verified": true,
+        "verification_date": "2024-01-15T00:00:00Z"
+      },
+      {
+        "authority": "UK Gambling Commission",
+        "license_number": "UKGC-54321",
+        "jurisdiction": "United Kingdom",
+        "verified": true,
+        "verification_date": "2024-01-15T00:00:00Z"
+      }
+    ],
+    "rtp_info": [
+      {
+        "game_name": "Starburst",
+        "rtp_percentage": 96.1,
+        "game_category": "Slots",
+        "provider": "NetEnt"
+      },
+      {
+        "game_name": "Book of Dead",
+        "rtp_percentage": 96.21,
+        "game_category": "Slots",
+        "provider": "Play'n GO"
+      },
+      {
+        "game_name": "European Roulette",
+        "rtp_percentage": 97.3,
+        "game_category": "Table Games",
+        "provider": "Evolution Gaming"
+      }
+    ],
+    "fairness": [
+      {
+        "testing_agency": "eCOGRA",
+        "certification": "Safe and Fair",
+        "last_audit_date": "2024-01-01T00:00:00Z",
+        "certified": true
+      },
+      {
+        "testing_agency": "iTech Labs",
+        "certification": "RNG Certified",
+        "last_audit_date": "2024-02-01T00:00:00Z",
+        "certified": true
+      }
+    ],
+    "providers": [
+      {
+        "name": "NetEnt",
+        "games_count": 150,
+        "popular_games": [
+          "Starburst",
+          "Gonzo's Quest"
+        ]
+      },
+      {
+        "name": "Microgaming",
+        "games_count": 200,
+        "popular_games": [
+          "Mega Moolah",
+          "Immortal Romance"
+        ]
+      },
+      {
+        "name": "Evolution Gaming",
+        "games_count": 50,
+        "popular_games": [
+          "Lightning Roulette",
+          "Dream Catcher"
+        ]
+      },
+      {
+        "name": "Play'n GO",
+        "games_count": 100,
+        "popular_games": []
+      },
+      {
+        "name": "Pragmatic Play",
+        "games_count": 120,
+        "popular_games": []
+      }
+    ],
+    "security": {
+      "ssl_certificate": true,
+      "encryption_type": "256-bit SSL",
+      "two_factor_auth": true,
+      "responsible_gambling_tools": [
+        "Self-Exclusion",
+        "Deposit Limits",
+        "Time Limits",
+        "Reality Check"
+      ],
+      "data_protection_compliance": [
+        "GDPR",
+        "PCI DSS"
+      ]
+    },
+    "withdrawal_methods": [
+      {
+        "method": "Visa",
+        "min_amount": 20.0,
+        "max_amount": 5000.0,
+        "processing_time": "1-3 days",
+        "fees": "Free"
+      },
+      {
+        "method": "Mastercard",
+        "min_amount": 20.0,
+        "max_amount": 5000.0,
+        "processing_time": "1-3 days",
+        "fees": "Free"
+      },
+      {
+        "method": "PayPal",
+        "min_amount": 10.0,
+        "max_amount": 10000.0,
+        "processing_time": "0-24 hours",
+        "fees": "Free"
+      },
+      {
+        "method": "Skrill",
+        "min_amount": 10.0,
+        "max_amount": 10000.0,
+        "processing_time": "0-24 hours",
+        "fees": "Free"
+      },
+      {
+        "method": "Bank Transfer",
+        "min_amount": 100.0,
+        "max_amount": 50000.0,
+        "processing_time": "3-5 days",
+        "fees": "Free"
+      }
+    ],
+    "reviews": [
+      {
+        "source": "TrustPilot",
+        "rating": 4.5,
+        "review_count": 1250,
+        "positive_aspects": [
+          "Fast withdrawals",
+          "Great game selection",
+          "Professional support"
+        ],
+        "negative_aspects": [
+          "Limited crypto options"
+        ],
+        "review_date": "2024-01-20T00:00:00Z"
+      },
+      {
+        "source": "AskGamblers",
+        "rating": 4.2,
+        "review_count": 890,
+        "positive_aspects": [
+          "Licensed and regulated",
+          "Good bonuses"
+        ],
+        "negative_aspects": [
+          "Wagering requirements"
+        ],
+        "review_date": "2024-01-15T00:00:00Z"
+      }
+    ],
+    "collection_date": "2025-11-22T01:55:27.646010Z",
+    "last_updated": null,
+    "data_completeness_score": 100.0,
+    "additional_info": {}
+  },
+  {
+    "name": "Lucky Spin Casino",
+    "url": "https://www.luckyspin-casino.example.com/",
+    "description": "An exciting casino platform with innovative games and rewarding promotions.",
+    "licenses": [
+      {
+        "authority": "Curacao eGaming",
+        "license_number": "CEG-8048/JAZ",
+        "jurisdiction": "Curacao",
+        "verified": false,
+        "verification_date": null
+      }
+    ],
+    "rtp_info": [
+      {
+        "game_name": null,
+        "rtp_percentage": 96.5,
+        "game_category": "Slots",
+        "provider": null
+      },
+      {
+        "game_name": null,
+        "rtp_percentage": 97.0,
+        "game_category": "Table Games",
+        "provider": null
+      }
+    ],
+    "fairness": [
+      {
+        "testing_agency": "Gaming Laboratories International",
+        "certification": null,
+        "last_audit_date": null,
+        "certified": true
+      }
+    ],
+    "providers": [
+      {
+        "name": "Betsoft",
+        "games_count": null,
+        "popular_games": []
+      },
+      {
+        "name": "Pragmatic Play",
+        "games_count": null,
+        "popular_games": []
+      },
+      {
+        "name": "Yggdrasil",
+        "games_count": null,
+        "popular_games": []
+      },
+      {
+        "name": "Red Tiger",
+        "games_count": null,
+        "popular_games": []
+      }
+    ],
+    "security": {
+      "ssl_certificate": true,
+      "encryption_type": "128-bit SSL",
+      "two_factor_auth": false,
+      "responsible_gambling_tools": [
+        "Self-Exclusion",
+        "Deposit Limits"
+      ],
+      "data_protection_compliance": [
+        "GDPR"
+      ]
+    },
+    "withdrawal_methods": [
+      {
+        "method": "Bitcoin",
+        "min_amount": null,
+        "max_amount": null,
+        "processing_time": "0-24 hours",
+        "fees": null
+      },
+      {
+        "method": "Ethereum",
+        "min_amount": null,
+        "max_amount": null,
+        "processing_time": "0-24 hours",
+        "fees": null
+      },
+      {
+        "method": "Visa",
+        "min_amount": null,
+        "max_amount": null,
+        "processing_time": "3-5 days",
+        "fees": null
+      },
+      {
+        "method": "Mastercard",
+        "min_amount": null,
+        "max_amount": null,
+        "processing_time": "3-5 days",
+        "fees": null
+      }
+    ],
+    "reviews": [
+      {
+        "source": "Casino.org",
+        "rating": 3.8,
+        "review_count": 450,
+        "positive_aspects": [
+          "Crypto-friendly",
+          "Good mobile experience"
+        ],
+        "negative_aspects": [
+          "Slower support response"
+        ],
+        "review_date": "2024-01-10T00:00:00Z"
+      }
+    ],
+    "collection_date": "2025-11-22T01:55:27.646078Z",
+    "last_updated": null,
+    "data_completeness_score": 85.7,
+    "additional_info": {}
+  },
+  {
+    "name": "Diamond Palace Casino",
+    "url": "https://www.diamond-palace.example.com/",
+    "description": "Luxury casino experience with VIP programs and exclusive tournaments.",
+    "licenses": [
+      {
+        "authority": "Malta Gaming Authority",
+        "license_number": "MGA/B2C/456/2021",
+        "jurisdiction": "Malta",
+        "verified": true,
+        "verification_date": null
+      }
+    ],
+    "rtp_info": [
+      {
+        "game_name": "Mega Fortune",
+        "rtp_percentage": 96.6,
+        "game_category": "Progressive Slots",
+        "provider": "NetEnt"
+      }
+    ],
+    "fairness": [
+      {
+        "testing_agency": "eCOGRA",
+        "certification": null,
+        "last_audit_date": null,
+        "certified": true
+      }
+    ],
+    "providers": [
+      {
+        "name": "NetEnt",
+        "games_count": null,
+        "popular_games": []
+      },
+      {
+        "name": "Playtech",
+        "games_count": null,
+        "popular_games": []
+      },
+      {
+        "name": "Evolution Gaming",
+        "games_count": null,
+        "popular_games": []
+      }
+    ],
+    "security": {
+      "ssl_certificate": true,
+      "encryption_type": "256-bit SSL",
+      "two_factor_auth": true,
+      "responsible_gambling_tools": [
+        "Self-Exclusion",
+        "Deposit Limits",
+        "Cool-off Period"
+      ],
+      "data_protection_compliance": [
+        "GDPR"
+      ]
+    },
+    "withdrawal_methods": [
+      {
+        "method": "PayPal",
+        "min_amount": 10.0,
+        "max_amount": null,
+        "processing_time": "0-24 hours",
+        "fees": null
+      },
+      {
+        "method": "Trustly",
+        "min_amount": 20.0,
+        "max_amount": null,
+        "processing_time": "Instant",
+        "fees": null
+      },
+      {
+        "method": "Bank Transfer",
+        "min_amount": null,
+        "max_amount": null,
+        "processing_time": "2-4 days",
+        "fees": null
+      }
+    ],
+    "reviews": [
+      {
+        "source": "CasinoMeister",
+        "rating": 4.7,
+        "review_count": 680,
+        "positive_aspects": [
+          "Excellent VIP program",
+          "Fast payouts",
+          "Great live casino"
+        ],
+        "negative_aspects": [],
+        "review_date": "2024-01-25T00:00:00Z"
+      }
+    ],
+    "collection_date": "2025-11-22T01:55:27.646110Z",
+    "last_updated": null,
+    "data_completeness_score": 92.9,
+    "additional_info": {}
+  }
+]

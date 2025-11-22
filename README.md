@@ -2,6 +2,19 @@
 
 An end-to-end system for automatically gathering structured data about online casinos. This tool collects comprehensive information including licensing, RTP (Return to Player), fairness certifications, game providers, security measures, withdrawal methods, and reviews.
 
+## 🌐 Live Control Dashboard
+
+**Try the interactive web dashboard:** [https://jmenichole.github.io/casino-scraper-agent/](https://jmenichole.github.io/casino-scraper-agent/)
+
+The control dashboard provides a modern web interface to:
+- View casino data with interactive charts and statistics
+- Browse and search collected casinos
+- Upload and analyze your own data files
+- View detailed information for each casino
+- Toggle between light and dark themes
+
+See the [Dashboard Documentation](docs/README.md) for more details.
+
 ## Features
 
 - **Comprehensive Data Collection**: Gathers 7+ categories of casino information
@@ -139,6 +152,40 @@ python -m casino_collector.cli --url https://example-casino.com --no-csv --no-su
 ```bash
 python -m casino_collector.cli --url https://example-casino.com --log-level DEBUG
 ```
+
+## Web Dashboard
+
+The Casino Intelligence Collector includes a modern web-based control dashboard for viewing and analyzing collected data.
+
+### Features
+
+- **Interactive Dashboard**: Real-time statistics and charts
+- **Casino Browser**: Search, filter, and sort casinos
+- **Detailed Views**: Click any casino for comprehensive information
+- **Data Upload**: Load your own JSON files
+- **Dark Mode**: Toggle between light and dark themes
+- **Responsive Design**: Works on desktop, tablet, and mobile
+
+### Accessing the Dashboard
+
+Visit the live dashboard: **[https://jmenichole.github.io/casino-scraper-agent/](https://jmenichole.github.io/casino-scraper-agent/)**
+
+Or run it locally:
+
+```bash
+cd docs
+python -m http.server 8000
+# Visit http://localhost:8000
+```
+
+### Using the Dashboard
+
+1. **Load Data**: Upload a JSON file from the `output/` directory or use sample data
+2. **Explore**: View statistics, charts, and browse all casinos
+3. **Details**: Click any casino card to see comprehensive information
+4. **Theme**: Toggle between light and dark modes
+
+See the [Dashboard Documentation](docs/README.md) for complete details.
 
 ## Output Files
 

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Intelligence Collector - Control Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-dice"></i>
+                    <h1>Casino Intelligence Collector</h1>
+                </div>
+                <div class="header-actions">
+                    <button id="themeToggle" class="btn-icon" title="Toggle Theme">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button id="refreshData" class="btn-primary" title="Refresh Data">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="dashboard">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </button>
+            <button class="tab-btn" data-tab="casinos">
+                <i class="fas fa-list"></i> Casinos
+            </button>
+            <button class="tab-btn" data-tab="upload">
+                <i class="fas fa-upload"></i> Upload Data
+            </button>
+            <button class="tab-btn" data-tab="config">
+                <i class="fas fa-cog"></i> Configuration
+            </button>
+            <button class="tab-btn" data-tab="about">
+                <i class="fas fa-info-circle"></i> About
+            </button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Dashboard Tab -->
+            <div class="tab-content active" id="dashboard">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-building"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalCasinos">0</h3>
+                            <p>Total Casinos</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalLicenses">0</h3>
+                            <p>Total Licenses</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="totalProviders">0</h3>
+                            <p>Game Providers</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="avgRating">0.0</h3>
+                            <p>Avg Rating</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-percent"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="avgRtp">0.0%</h3>
+                            <p>Avg RTP</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3 id="avgCompleteness">0%</h3>
+                            <p>Avg Completeness</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="chart-card">
+                        <h3>Top Providers</h3>
+                        <div id="topProvidersChart" class="chart-content"></div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Licensing Jurisdictions</h3>
+                        <div id="jurisdictionsChart" class="chart-content"></div>
+                    </div>
+                </div>
+
+                <div class="recent-collections">
+                    <h3>Recent Collections</h3>
+                    <div id="recentCollections" class="timeline"></div>
+                </div>
+            </div>
+
+            <!-- Casinos Tab -->
+            <div class="tab-content" id="casinos">
+                <div class="toolbar">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Search casinos...">
+                    </div>
+                    <div class="filter-controls">
+                        <select id="sortBy" class="select-input">
+                            <option value="name">Sort by Name</option>
+                            <option value="rating">Sort by Rating</option>
+                            <option value="completeness">Sort by Completeness</option>
+                            <option value="date">Sort by Collection Date</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="casinosGrid" class="casinos-grid">
+                    <!-- Casino cards will be inserted here -->
+                </div>
+            </div>
+
+            <!-- Upload Data Tab -->
+            <div class="tab-content" id="upload">
+                <div class="upload-section">
+                    <h2>Upload Casino Data</h2>
+                    <p class="upload-description">
+                        Upload a JSON file containing casino data to view in the dashboard.
+                        The file should be in the format generated by the Casino Intelligence Collector.
+                    </p>
+                    
+                    <div class="upload-box">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Drag & drop your JSON file here or click to browse</p>
+                        <input type="file" id="fileInput" accept=".json" hidden>
+                        <button id="browseBtn" class="btn-primary">Browse Files</button>
+                    </div>
+
+                    <div id="uploadStatus" class="upload-status"></div>
+
+                    <div class="sample-data-section">
+                        <h3>Or Try Sample Data</h3>
+                        <p>Load sample casino data to see how the dashboard works.</p>
+                        <button id="loadSampleData" class="btn-secondary">
+                            <i class="fas fa-download"></i> Load Sample Data
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Configuration Tab -->
+            <div class="tab-content" id="config">
+                <div class="config-section">
+                    <h2>Scraper Configuration</h2>
+                    <p class="config-description">
+                        View and understand the typical configuration for the Casino Intelligence Collector.
+                        To modify these settings, edit your local <code>config.json</code> file.
+                    </p>
+
+                    <div class="config-card">
+                        <h3><i class="fas fa-robot"></i> Scraper Settings</h3>
+                        <div class="config-grid">
+                            <div class="config-item">
+                                <label>Delay Min (seconds):</label>
+                                <span>1.0</span>
+                            </div>
+                            <div class="config-item">
+                                <label>Delay Max (seconds):</label>
+                                <span>3.0</span>
+                            </div>
+                            <div class="config-item">
+                                <label>Timeout (seconds):</label>
+                                <span>30</span>
+                            </div>
+                            <div class="config-item">
+                                <label>Max Retries:</label>
+                                <span>3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="config-card">
+                        <h3><i class="fas fa-save"></i> Storage Settings</h3>
+                        <div class="config-grid">
+                            <div class="config-item">
+                                <label>Output Directory:</label>
+                                <span>output</span>
+                            </div>
+                            <div class="config-item">
+                                <label>Auto Save JSON:</label>
+                                <span><i class="fas fa-check-circle text-success"></i> Enabled</span>
+                            </div>
+                            <div class="config-item">
+                                <label>Auto Save CSV:</label>
+                                <span><i class="fas fa-check-circle text-success"></i> Enabled</span>
+                            </div>
+                            <div class="config-item">
+                                <label>Generate Summary:</label>
+                                <span><i class="fas fa-check-circle text-success"></i> Enabled</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="config-example">
+                        <h3>Example Configuration File</h3>
+                        <pre><code>{
+  "scraper": {
+    "delay_min": 1.0,
+    "delay_max": 3.0,
+    "timeout": 30,
+    "max_retries": 3
+  },
+  "storage": {
+    "output_dir": "output",
+    "auto_save_json": true,
+    "auto_save_csv": true,
+    "generate_summary": true
+  },
+  "logging": {
+    "level": "INFO",
+    "log_file": "logs/casino_collector.log"
+  },
+  "target_urls": [
+    "https://casino1.com",
+    "https://casino2.com"
+  ]
+}</code></pre>
+                    </div>
+                </div>
+            </div>
+
+            <!-- About Tab -->
+            <div class="tab-content" id="about">
+                <div class="about-section">
+                    <h2>About Casino Intelligence Collector</h2>
+                    
+                    <div class="about-card">
+                        <h3><i class="fas fa-info-circle"></i> Overview</h3>
+                        <p>
+                            The Casino Intelligence Collector is an end-to-end system for automatically 
+                            gathering structured data about online casinos. This dashboard provides a 
+                            web-based interface to view and analyze collected data.
+                        </p>
+                    </div>
+
+                    <div class="about-card">
+                        <h3><i class="fas fa-database"></i> Data Categories</h3>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Licensing Information (authority, jurisdiction, verification)</li>
+                            <li><i class="fas fa-check"></i> RTP (Return to Player) percentages</li>
+                            <li><i class="fas fa-check"></i> Fairness certifications (eCOGRA, iTech Labs, etc.)</li>
+                            <li><i class="fas fa-check"></i> Game providers (NetEnt, Microgaming, etc.)</li>
+                            <li><i class="fas fa-check"></i> Security measures (SSL, encryption, 2FA)</li>
+                            <li><i class="fas fa-check"></i> Withdrawal methods and policies</li>
+                            <li><i class="fas fa-check"></i> Reviews and ratings</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-card">
+                        <h3><i class="fas fa-terminal"></i> Command Line Usage</h3>
+                        <div class="code-block">
+                            <pre># Scrape a single casino
+python -m casino_collector.cli --url https://example-casino.com
+
+# Scrape multiple casinos from a file
+python -m casino_collector.cli --file casinos.txt
+
+# Use configuration file
+python -m casino_collector.cli --config config.json</pre>
+                        </div>
+                    </div>
+
+                    <div class="about-card">
+                        <h3><i class="fas fa-link"></i> Links</h3>
+                        <div class="links-grid">
+                            <a href="https://github.com/jmenichole/casino-scraper-agent" target="_blank" class="link-btn">
+                                <i class="fab fa-github"></i> GitHub Repository
+                            </a>
+                            <a href="https://github.com/jmenichole/casino-scraper-agent#readme" target="_blank" class="link-btn">
+                                <i class="fas fa-book"></i> Documentation
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="disclaimer">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Disclaimer</h4>
+                        <p>
+                            This tool is for research and educational purposes only. Users are responsible for 
+                            complying with target websites' terms of service, respecting robots.txt files, 
+                            following applicable laws and regulations, and obtaining necessary permissions 
+                            before scraping.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Casino Intelligence Collector | 
+                <a href="https://github.com/jmenichole/casino-scraper-agent" target="_blank">GitHub</a>
+            </p>
+        </footer>
+
+        <!-- Modal for Casino Details -->
+        <div id="casinoModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div id="casinoDetails"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
