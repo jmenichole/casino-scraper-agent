@@ -72,7 +72,7 @@ python -m casino_collector.cli --url https://example-casino.com
 
 ### Scrape Multiple Casinos from a File
 
-1. Create a text file with casino URLs (one per line):
+1. Create a text file with casino URLs (one per line, or mixed with other text):
 ```text
 https://casino1.com
 https://casino2.com
@@ -83,6 +83,28 @@ https://casino3.com
 ```bash
 python -m casino_collector.cli --file casinos.txt
 ```
+
+**Note:** The file reader now intelligently extracts URLs from mixed content, so you can use files with descriptions, comments, and other text mixed in with the URLs.
+
+### Copy-Paste a List of Casinos (NEW!)
+
+You can now directly paste a list of casino URLs without creating a file:
+
+```bash
+python -m casino_collector.cli --list "https://casino1.com
+https://casino2.com
+https://casino3.com"
+```
+
+This method automatically extracts URLs from the text you paste, so you can copy content like:
+```
+My favorite casinos:
+https://casino1.com - Great bonuses
+https://casino2.com
+Check out https://casino3.com too!
+```
+
+And the tool will extract all valid URLs automatically!
 
 ### Use a Configuration File
 
@@ -103,7 +125,7 @@ python -m casino_collector.cli --config config.json
 ### Command Line Options
 
 ```
-usage: python -m casino_collector.cli [-h] (-u URL | -f FILE | --config CONFIG)
+usage: python -m casino_collector.cli [-h] (-u URL | -f FILE | -l LIST | --config CONFIG)
                                        [-o OUTPUT] [--no-json] [--no-csv]
                                        [--no-summary] [--delay-min DELAY_MIN]
                                        [--delay-max DELAY_MAX]
@@ -113,7 +135,8 @@ usage: python -m casino_collector.cli [-h] (-u URL | -f FILE | --config CONFIG)
 Options:
   -h, --help            Show this help message and exit
   -u URL, --url URL     Single casino URL to scrape
-  -f FILE, --file FILE  File containing list of casino URLs (one per line)
+  -f FILE, --file FILE  File containing list of casino URLs (one per line, or mixed with text)
+  -l LIST, --list LIST  Multi-line list of casino URLs or text containing URLs (paste directly)
   --config CONFIG       Path to configuration file (JSON)
   -o OUTPUT, --output OUTPUT
                         Output directory for results (default: output)
@@ -136,6 +159,21 @@ Options:
 **Scrape with custom output directory:**
 ```bash
 python -m casino_collector.cli --url https://example-casino.com --output ./data
+```
+
+**Copy-paste a list of casinos directly:**
+```bash
+python -m casino_collector.cli --list "https://casino1.com
+https://casino2.com
+https://casino3.com"
+```
+
+**Copy-paste with mixed content (extracts URLs automatically):**
+```bash
+python -m casino_collector.cli --list "Affiliate links:
+https://www.casino1.com/?ref=xyz - Great bonuses
+https://www.casino2.com
+Check out https://www.casino3.com for rewards"
 ```
 
 **Scrape with custom delays (be more respectful):**

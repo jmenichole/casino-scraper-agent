@@ -16,7 +16,7 @@ try:
     from casino_collector.storage import DataStorage
     from casino_collector.config import Config
     from casino_collector.utils import (
-        setup_logging, validate_url, sanitize_filename, format_duration
+        setup_logging, validate_url, sanitize_filename, format_duration, extract_urls
     )
     print("✓ All imports successful")
 except ImportError as e:
@@ -119,6 +119,38 @@ try:
     print("✓ Duration formatting works")
 except Exception as e:
     print(f"✗ Duration formatting failed: {e}")
+    sys.exit(1)
+
+# Test URL extraction
+try:
+    # Simple list
+    text1 = "https://example1.com\nhttps://example2.com"
+    urls1 = extract_urls(text1)
+    assert len(urls1) == 2
+    assert "https://example1.com" in urls1
+    assert "https://example2.com" in urls1
+    
+    # Mixed content
+    text2 = "Check out https://casino1.com and also https://casino2.com for bonuses"
+    urls2 = extract_urls(text2)
+    assert len(urls2) == 2
+    
+    # Duplicate URLs (should be deduplicated)
+    text3 = "https://test.com\nhttps://test.com\nhttps://example.com"
+    urls3 = extract_urls(text3)
+    assert len(urls3) == 2
+    
+    # Empty text
+    urls4 = extract_urls("")
+    assert len(urls4) == 0
+    
+    # Text with no URLs
+    urls5 = extract_urls("No URLs here, just text")
+    assert len(urls5) == 0
+    
+    print("✓ URL extraction works")
+except Exception as e:
+    print(f"✗ URL extraction failed: {e}")
     sys.exit(1)
 
 # Test completeness score calculation
