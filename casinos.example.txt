@@ -1,0 +1,9 @@
+# Example casino URLs - one per line
+# Lines starting with # are comments
+
+# Example casinos (replace with real casino URLs)
+https://www.example-casino1.com
+https://www.example-casino2.com
+https://www.example-casino3.com
+
+# Add more casino URLs here

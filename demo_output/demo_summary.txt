@@ -1,0 +1,44 @@
+================================================================================
+CASINO INTELLIGENCE COLLECTOR - SUMMARY REPORT
+================================================================================
+
+Report Generated: 2025-11-22 01:36:40
+Total Casinos Analyzed: 3
+
+--------------------------------------------------------------------------------
+OVERALL STATISTICS
+--------------------------------------------------------------------------------
+Average Data Completeness: 92.9%
+Total Licenses Found: 4
+Total Provider Relationships: 12
+Casinos with SSL: 3/3
+Casinos with 2FA: 2/3
+
+--------------------------------------------------------------------------------
+INDIVIDUAL CASINO DETAILS
+--------------------------------------------------------------------------------
+
+Casino: Royal Fortune Casino
+URL: https://www.royalfortune-casino.example.com/
+Completeness: 100.0%
+Licenses: 2
+Providers: 5
+Withdrawal Methods: 5
+Reviews: 2
+
+Casino: Lucky Spin Casino
+URL: https://www.luckyspin-casino.example.com/
+Completeness: 85.7%
+Licenses: 1
+Providers: 4
+Withdrawal Methods: 4
+Reviews: 1
+
+Casino: Diamond Palace Casino
+URL: https://www.diamond-palace.example.com/
+Completeness: 92.9%
+Licenses: 1
+Providers: 3
+Withdrawal Methods: 3
+Reviews: 1
+

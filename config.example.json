@@ -1,0 +1,24 @@
+{
+  "scraper": {
+    "delay_min": 1.0,
+    "delay_max": 3.0,
+    "timeout": 30,
+    "max_retries": 3,
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+  },
+  "storage": {
+    "output_dir": "output",
+    "auto_save_json": true,
+    "auto_save_csv": true,
+    "generate_summary": true
+  },
+  "logging": {
+    "level": "INFO",
+    "log_file": "logs/casino_collector.log",
+    "console_output": true
+  },
+  "target_urls": [
+    "https://www.example-casino1.com",
+    "https://www.example-casino2.com"
+  ]
+}
