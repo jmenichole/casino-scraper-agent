@@ -131,6 +131,13 @@ function handleFile(file) {
     reader.onload = (e) => {
         try {
             const data = JSON.parse(e.target.result);
+            
+            // Validate data is an array
+            if (!Array.isArray(data)) {
+                showUploadStatus('Invalid data format: expected an array of casino objects', 'error');
+                return;
+            }
+            
             loadCasinoData(data);
             showUploadStatus(`Successfully loaded ${data.length} casino(s)`, 'success');
             
@@ -153,214 +160,23 @@ function showUploadStatus(message, type) {
 }
 
 function loadSampleData() {
-    // Sample casino data
-    const sampleData = [
-        {
-            "name": "Royal Fortune Casino",
-            "url": "https://www.royalfortune-casino.example.com/",
-            "description": "A premium online casino offering a wide selection of games with top-tier security and fast withdrawals.",
-            "licenses": [
-                {
-                    "authority": "Malta Gaming Authority",
-                    "license_number": "MGA/B2C/123/2020",
-                    "jurisdiction": "Malta",
-                    "verified": true,
-                    "verification_date": "2024-01-15T00:00:00Z"
-                },
-                {
-                    "authority": "UK Gambling Commission",
-                    "license_number": "UKGC-54321",
-                    "jurisdiction": "United Kingdom",
-                    "verified": true,
-                    "verification_date": "2024-01-15T00:00:00Z"
-                }
-            ],
-            "rtp_info": [
-                {
-                    "game_name": "Starburst",
-                    "rtp_percentage": 96.1,
-                    "game_category": "Slots",
-                    "provider": "NetEnt"
-                },
-                {
-                    "game_name": "Book of Dead",
-                    "rtp_percentage": 96.21,
-                    "game_category": "Slots",
-                    "provider": "Play'n GO"
-                },
-                {
-                    "game_name": "European Roulette",
-                    "rtp_percentage": 97.3,
-                    "game_category": "Table Games",
-                    "provider": "Evolution Gaming"
-                }
-            ],
-            "fairness": [
-                {
-                    "testing_agency": "eCOGRA",
-                    "certification": "Safe and Fair",
-                    "certified": true,
-                    "last_audit_date": "2024-01-01T00:00:00Z"
-                }
-            ],
-            "providers": [
-                {
-                    "name": "NetEnt",
-                    "games_count": 150,
-                    "popular_games": ["Starburst", "Gonzo's Quest"]
-                },
-                {
-                    "name": "Microgaming",
-                    "games_count": 200,
-                    "popular_games": ["Mega Moolah", "Immortal Romance"]
-                },
-                {
-                    "name": "Evolution Gaming",
-                    "games_count": 50,
-                    "popular_games": ["Lightning Roulette", "Dream Catcher"]
-                },
-                {
-                    "name": "Play'n GO",
-                    "games_count": 100,
-                    "popular_games": []
-                }
-            ],
-            "security": {
-                "ssl_certificate": true,
-                "encryption_type": "256-bit SSL",
-                "two_factor_auth": true,
-                "responsible_gambling_tools": ["Self-Exclusion", "Deposit Limits", "Time Limits", "Reality Check"],
-                "data_protection_compliance": ["GDPR", "PCI DSS"]
-            },
-            "withdrawal_methods": [
-                {
-                    "method": "Visa",
-                    "min_amount": 20.0,
-                    "max_amount": 5000.0,
-                    "processing_time": "1-3 days",
-                    "fees": "Free"
-                },
-                {
-                    "method": "PayPal",
-                    "min_amount": 10.0,
-                    "max_amount": 10000.0,
-                    "processing_time": "0-24 hours",
-                    "fees": "Free"
-                },
-                {
-                    "method": "Bank Transfer",
-                    "min_amount": 100.0,
-                    "max_amount": 50000.0,
-                    "processing_time": "3-5 days",
-                    "fees": "Free"
-                }
-            ],
-            "reviews": [
-                {
-                    "source": "TrustPilot",
-                    "rating": 4.5,
-                    "review_count": 1250,
-                    "positive_aspects": ["Fast withdrawals", "Great game selection", "Professional support"],
-                    "negative_aspects": ["Limited crypto options"],
-                    "review_date": "2024-01-20T00:00:00Z"
-                }
-            ],
-            "collection_date": "2024-11-22T01:00:00Z",
-            "data_completeness_score": 100.0
-        },
-        {
-            "name": "Lucky Star Casino",
-            "url": "https://www.luckystar-casino.example.com/",
-            "description": "Experience the thrill of gaming with generous bonuses and 24/7 customer support.",
-            "licenses": [
-                {
-                    "authority": "Curacao eGaming",
-                    "license_number": "CEG-789456",
-                    "jurisdiction": "Curacao",
-                    "verified": false
-                }
-            ],
-            "rtp_info": [
-                {
-                    "game_name": "Mega Fortune",
-                    "rtp_percentage": 96.0,
-                    "game_category": "Slots",
-                    "provider": "NetEnt"
-                },
-                {
-                    "game_name": "Blackjack Classic",
-                    "rtp_percentage": 99.5,
-                    "game_category": "Table Games",
-                    "provider": "Microgaming"
-                }
-            ],
-            "fairness": [
-                {
-                    "testing_agency": "iTech Labs",
-                    "certification": "RNG Certified",
-                    "certified": true,
-                    "last_audit_date": "2024-03-15T00:00:00Z"
-                }
-            ],
-            "providers": [
-                {
-                    "name": "NetEnt",
-                    "games_count": 120,
-                    "popular_games": ["Mega Fortune"]
-                },
-                {
-                    "name": "Microgaming",
-                    "games_count": 180,
-                    "popular_games": ["Blackjack Classic"]
-                },
-                {
-                    "name": "Pragmatic Play",
-                    "games_count": 95,
-                    "popular_games": []
-                }
-            ],
-            "security": {
-                "ssl_certificate": true,
-                "encryption_type": "128-bit SSL",
-                "two_factor_auth": false,
-                "responsible_gambling_tools": ["Self-Exclusion", "Deposit Limits"],
-                "data_protection_compliance": ["GDPR"]
-            },
-            "withdrawal_methods": [
-                {
-                    "method": "Visa",
-                    "min_amount": 30.0,
-                    "max_amount": 3000.0,
-                    "processing_time": "2-5 days",
-                    "fees": "Free"
-                },
-                {
-                    "method": "Bitcoin",
-                    "min_amount": 50.0,
-                    "max_amount": 10000.0,
-                    "processing_time": "0-2 hours",
-                    "fees": "Network fees apply"
-                }
-            ],
-            "reviews": [
-                {
-                    "source": "AskGamblers",
-                    "rating": 4.0,
-                    "review_count": 650,
-                    "positive_aspects": ["Good bonuses", "Fast crypto withdrawals"],
-                    "negative_aspects": ["Limited payment options"],
-                    "review_date": "2024-02-10T00:00:00Z"
-                }
-            ],
-            "collection_date": "2024-11-22T02:00:00Z",
-            "data_completeness_score": 85.7
-        }
-    ];
-    
-    loadCasinoData(sampleData);
-    localStorage.setItem('casinoData', JSON.stringify(sampleData));
-    showUploadStatus('Sample data loaded successfully!', 'success');
-    setTimeout(() => switchTab('dashboard'), 1000);
+    // Load sample data from JSON file
+    fetch('sample-data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to load sample data');
+            }
+            return response.json();
+        })
+        .then(data => {
+            loadCasinoData(data);
+            localStorage.setItem('casinoData', JSON.stringify(data));
+            showUploadStatus('Sample data loaded successfully!', 'success');
+            setTimeout(() => switchTab('dashboard'), 1000);
+        })
+        .catch(error => {
+            showUploadStatus('Error loading sample data: ' + error.message, 'error');
+        });
 }
 
 function checkForSampleData() {
