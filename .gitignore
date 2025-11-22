@@ -37,6 +37,8 @@ ENV/
 
 # Output files
 output/
+demo_output/
+example_output/
 logs/
 *.log
 
